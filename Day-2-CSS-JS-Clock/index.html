@@ -8,12 +8,26 @@
 </head>
 <body>
     
-
+    <header>
+        Javascript Clock 
+    </header>
+    <div>
+        By: 
+        <a href="https://www,averydante.com">
+            Avery-Dante Hinds
+        </a>
+    </div>
     <div class="clock">
         <div class="clock-face">
-            <div class="hand hour-hand" ></div>
-            <div class="hand min-hand" ></div>
+            <!-- !this is The Hour Hand -->
+            <div class="hand hour-hand" ></div> 
+
+            <!-- !THis is the Minute Hand -->
+            <div class="hand minute-hand" ></div>
+
+            <!-- !This is the Second Hand -->
             <div class="hand second-hand" ></div>
+
         </div>
     </div>
 
@@ -25,6 +39,7 @@
       font-family: 'helvetica neue';
       text-align: center;
       font-size: 10px;
+      
     }
     body {
       margin: 0;
@@ -33,18 +48,25 @@
       flex: 1;
       min-height: 100vh;
       align-items: center;
+      flex-direction: column;
+    }
+    header {
+        padding: 0 1em 1em 1em;
+        color: rgb(6, 41, 68);
+        font-size: 3em;
+        text-shadow:#9C6410 1px 2px 9px; 
     }
     .clock {
       width: 30rem;
       height: 30rem;
-      border: 20px solid white;
+      border: 20px solid #9C6410;
       border-radius: 50%;
       margin: 50px auto;
       position: relative;
       padding: 2rem;
       box-shadow:
         0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 0 3px #E8A746,
         inset 0 0 10px black,
         0 0 10px rgba(0,0,0,0.2);
     }
@@ -70,8 +92,31 @@
 
 
     <script>
+        const secondHand = document.querySelector('.second-hand');
+        const minuteHand = document.querySelector('.minute-hand');
+        const hourHand = document.querySelector('.hour-hand');
+
         function setDate() {
-            console.log('hi');
+
+            const thisMoment = new Date; //fecthing the whole time and date object 
+            const seconds = thisMoment.getSeconds(); //creating variable for and fetching seconds fromm date
+            const minutes = thisMoment.getMinutes(); // " ... "
+            const hours = thisMoment.getHours();    // " ... "
+            const time = (hours + ":" + minutes + ":" + seconds);
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            const minutesDegrees = ((minutes / 60) * 360) + 90;
+            const hoursDegrees = ((hours / 12 ) * 360) + 90;
+            secondHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minuteHand.style.transform = `rotate(${minutesDegrees}deg)`;
+            hourHand.style.transform = `rotate(${hoursDegrees}deg)`;
+
+            console.log('current time', time);
+
+
+            
+            
+          
+            
         };
         setInterval( setDate, 1000);
     </script>
