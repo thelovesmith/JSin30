@@ -1,6 +1,6 @@
 html {
     font-size: 10px;
-    background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
+    background: url(https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fs-media-cache-ak0.pinimg.com%2Foriginals%2F87%2Ff7%2Fa6%2F87f7a6bc056deab36e66acb37f48e68e.jpg&f=1) bottom center;
     background-size: cover;
 }
 
@@ -11,9 +11,12 @@ body, html {
 
 }
 header{
+    font-size: 6em;
+    color: black;
     display: flex;
     align-content: center;
     justify-content: center;
+    text-shadow: yellow 1px 2px;
 }
  .keys{
     display: flex;
