@@ -14,40 +14,40 @@
         Javascript Drums
     </header>
     <div class='keys'>
-        <div class="key">
+        <div data-key="65" class="key">
             <kbd>A</kbd>
 
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="83" class="key">
             <kbd>S</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="68" class="key">
             <kbd>D</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="70" class="key">
             <kbd>F</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="71" class="key">
             <kbd>G</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="72" class="key">
             <kbd>H</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="74" class="key">
             <kbd>J</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="75" class="key">
             <kbd>K</kbd>
             <span></span>
         </div>
-        <div class="key">
+        <div data-key="76" class="key">
             <kbd>L</kbd>
             <span></span>
         </div>
@@ -63,7 +63,15 @@
     <audio data-key="76" src="sounds/openhat.wav"></audio>
     <script>
         window.addEventListener('keydown', function(e) {
-            console.log(e.keyCode);
+            const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); // links the key that you pressed with the actual div int the html/dom 
+            console.log(audio);
+            console.log(key);
+            if (!audio) return; // stops function from runnig 
+            audio.currentTime = 0; // restarts th esound from zero
+            audio.play(); // plays audio element 
+            key.classList.add('playing'); // addds playing transformation from CSS 
+
         });
     </script>
 </body>
